@@ -1,100 +1,119 @@
-const MovingObject = require("./moving_object.js");
-const Util = require("./util.js");
-const Asteroid = require("./asteroid.js")
-const Ship = require("./ship.js");
+const Asteroid = require("./asteroid");
+const Bullet = require("./bullet");
+const Ship = require("./ship");
+const Util = require("./util");
 
-function Game(DIM_X=1300, DIM_Y=900, NUM_ASTEROIDS=15) {
-  this.DIM_X = DIM_X;
-  this.DIM_Y = DIM_Y;
-  this.NUM_ASTEROIDS = NUM_ASTEROIDS;
-  this.asteroids_arr = [];
+function Game() {
+  this.asteroids = [];
+  this.bullets = [];
+  this.ships = [];
+
   this.addAsteroids();
-  this.ship = new Ship(this.randomPosition());
 }
 
-Game.prototype.addAsteroids = function () {
-// let asteroids_arr = [];
-  for (let i = 0; i < this.NUM_ASTEROIDS; i++) {
-    this.asteroids_arr.push(new Asteroid(
-      { pos:[getRandomInt(this.DIM_X), getRandomInt(this.DIM_Y)],
-      game: this }
-    ));
+Game.BG_COLOR = "#000000";
+Game.DIM_X = 1000;
+Game.DIM_Y = 600;
+Game.FPS = 32;
+Game.NUM_ASTEROIDS = 10;
+
+Game.prototype.add = function add(object) {
+  if (object instanceof Asteroid) {
+    this.asteroids.push(object);
+  } else if (object instanceof Bullet) {
+    this.bullets.push(object);
+  } else if (object instanceof Ship) {
+    this.ships.push(object);
+  } else {
+    throw new Error("unknown type of object");
   }
-}
+};
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
+Game.prototype.addAsteroids = function addAsteroids() {
+  for (let i = 0; i < Game.NUM_ASTEROIDS; i++) {
+    this.add(new Asteroid({ game: this }));
+  }
+};
 
-Game.prototype.draw_game = function(ctx) {
-  ctx.clearRect(0,0,this.DIM_X,this.DIM_Y);
-  let allObs = this.allObjects();
-  // this.asteroids_arr.forEach(function (ele) {
-  //   ele.draw(ctx)
-  // });
-  allObs.forEach(function (ele) {
-    ele.draw(ctx)
+Game.prototype.addShip = function addShip() {
+  const ship = new Ship({
+    pos: this.randomPosition(),
+    game: this
   });
-}
 
-Game.prototype.moveObjects = function() {
-  this.asteroids_arr.forEach(function (ele) {
-    ele.move()
-  });
-}
-Game.prototype.wrap = function(pos) {
-  let x = pos[0];
-  let y = pos[1];
-  if (y < 0) {
-    x = this.DIM_X - x;
-    y = this.DIM_Y;
-  }
-  if (y > this.DIM_Y) {
-    x = this.DIM_X - x;
-    y = 0;
-  }
-  if (x < 0) {
-    x = this.DIM_X;
-    y = this.DIM_Y - y;
-  }
-  if (x > this.DIM_X) {
-    x = 0;
-    y = this.DIM_Y - y;
-  }
-  return [x,y];
-}
+  this.add(ship);
 
-Game.prototype.checkCollisions = function() {
-  for (let i = 0; i < this.asteroids_arr.length-1; i++) {
-    for (let j = i+1; j < this.asteroids_arr.length; j++) {
-      if (this.asteroids_arr[i].isCollidedWith(this.asteroids_arr[j])) {
-        this.asteroids_arr[i].collideWith(this.asteroids_arr[j])
+  return ship;
+};
+
+Game.prototype.allObjects = function allObjects() {
+  return [].concat(this.ships, this.asteroids, this.bullets);
+};
+
+Game.prototype.checkCollisions = function checkCollisions() {
+  const allObjects = this.allObjects();
+  for (let i = 0; i < allObjects.length; i++) {
+    for (let j = 0; j < allObjects.length; j++) {
+      const obj1 = allObjects[i];
+      const obj2 = allObjects[j];
+
+      if (obj1.isCollidedWith(obj2)) {
+        const collision = obj1.collideWith(obj2);
+        if (collision) return;
       }
     }
   }
-}
+};
 
-Game.prototype.step = function() {
-  this.moveObjects();
-  this.checkCollisions();
-}
+Game.prototype.draw = function draw(ctx) {
+  ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+  ctx.fillStyle = Game.BG_COLOR;
+  ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
 
-Game.prototype.remove = function(asteroid){
-  let idx = this.asteroids_arr.indexOf(asteroid);
-  this.asteroids_arr.splice(idx,1);
-}
+  this.allObjects().forEach(function(object) {
+    object.draw(ctx);
+  });
+};
 
-Game.prototype.randomPosition = function() {
-  return [getRandomInt(this.DIM_X), getRandomInt(this.DIM_Y)];
-}
+Game.prototype.isOutOfBounds = function isOutOfBounds(pos) {
+  return (pos[0] < 0) || (pos[1] < 0) ||
+    (pos[0] > Game.DIM_X) || (pos[1] > Game.DIM_Y);
+};
 
-Game.prototype.allObjects = function() {
-  let allObjectsArray = []
-  for (let i = 0; i < this.asteroids_arr.length; i++) {
-    allObjectsArray.push(this.asteroids_arr[i])
+Game.prototype.moveObjects = function moveObjects(delta) {
+  this.allObjects().forEach(function(object) {
+    object.move(delta);
+  });
+};
+
+Game.prototype.randomPosition = function randomPosition() {
+  return [
+    Game.DIM_X * Math.random(),
+    Game.DIM_Y * Math.random()
+  ];
+};
+
+Game.prototype.remove = function remove(object) {
+  if (object instanceof Bullet) {
+    this.bullets.splice(this.bullets.indexOf(object), 1);
+  } else if (object instanceof Asteroid) {
+    this.asteroids.splice(this.asteroids.indexOf(object), 1);
+  } else if (object instanceof Ship) {
+    this.ships.splice(this.ships.indexOf(object), 1);
+  } else {
+    throw new Error("unknown type of object");
   }
-  allObjectsArray.push(this.ship);
-  return allObjectsArray;
-}
+};
+
+Game.prototype.step = function step(delta) {
+  this.moveObjects(delta);
+  this.checkCollisions();
+};
+
+Game.prototype.wrap = function wrap(pos) {
+  return [
+    Util.wrap(pos[0], Game.DIM_X), Util.wrap(pos[1], Game.DIM_Y)
+  ];
+};
 
 module.exports = Game;
