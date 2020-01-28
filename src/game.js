@@ -175,7 +175,7 @@ Game.prototype.timeset = function() {
 }
 
 Game.prototype.lose = function lose() {
-
+  alert(`You Survived for ${this.time/60} Minutes and destroyed x`)
 }
 
 module.exports = Game;
