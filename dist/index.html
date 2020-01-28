@@ -1,12 +1,21 @@
 <html>
   <head>
     <title>Asteroids</title>
+
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    <script type="application/javascript" src="../vendor/keymaster.js"></script>
+    <script type="application/javascript" src="./main.js"></script>
   </head>
 
   <body>
-    <canvas></canvas>
-
-    <script type="application/javascript" src="../vendor/keymaster.js"></script>
-    <script type="application/javascript" src="./main.js"></script>
+    <div class="game">
+      <div class="game-instructions">
+        Instructions
+      </div>
+      <canvas class="game-board"></canvas>
+      <div class="scoreboard">
+        Score
+      </div>
+    </div>
   </body>
 </html>
