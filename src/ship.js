@@ -34,7 +34,7 @@ Ship.prototype.fireBullet = function fireBullet() {
   // }
 
   const relVel = Util.scale(
-    Util.dir(this.vel),
+    Util.dir(0),
     Bullet.SPEED
   );
 

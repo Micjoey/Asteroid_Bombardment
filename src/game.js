@@ -15,7 +15,7 @@ Game.BG_COLOR = "#000000";
 Game.DIM_X = 1000;
 Game.DIM_Y = 600;
 Game.FPS = 32;
-Game.NUM_ASTEROIDS = 10;
+Game.NUM_ASTEROIDS = 0;
 
 Game.prototype.add = function add(object) {
   if (object instanceof Asteroid) {
