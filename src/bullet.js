@@ -7,8 +7,8 @@ function Bullet(options) {
   MovingObject.call(this, options);
 }
 
-Bullet.RADIUS = 2;
-Bullet.SPEED = 15;
+Bullet.RADIUS = 10;
+Bullet.SPEED = 1;
 
 Util.inherits(Bullet, MovingObject);
 

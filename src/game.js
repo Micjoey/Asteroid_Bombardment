@@ -7,7 +7,7 @@ function Game() {
   this.asteroids = [];
   this.bullets = [];
   this.ships = [];
-
+  this.time = 0
   this.addAsteroids();
 }
 

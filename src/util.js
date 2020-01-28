@@ -14,6 +14,8 @@ const Util = {
   norm(vec) {
     return Util.dist([0, 0], vec);
   },
+
+  
   // Return a randomly oriented vector with the given length.
   randomVec(length) {
     // const deg = 2 * Math.PI * Math.random(90);
