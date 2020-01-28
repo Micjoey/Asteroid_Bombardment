@@ -48,7 +48,8 @@ MovingObject.prototype.move = function move(timeDelta) {
   if (this.game.isOutOfBounds(this.pos)) {
     if (this.isWrappable) {
       this.pos = this.game.wrap(this.pos);
-      this.game.addAsteroid()
+      newVel = this.vel[1] + 1
+      this.game.addAsteroid(newVel)
       // asteroid = this.game.asteroids.length
       // this.remove();
       // this.game.addAsteroid(asteroid + 1)

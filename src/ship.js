@@ -40,13 +40,10 @@ Ship.prototype.fireBullet = function fireBullet() {
 
   const bulletVel = [
     relVel[0] + this.vel[0], relVel[1] + this.vel[1]
-    // relVel[0] + this.vel[0], relVel[1] + this.vel[1]
-    // relVel[0] + this.vel[0], relVel[1] + this.vel[1]
   ];
 
   const bullet = new Bullet({
     pos: this.pos,
-    // vel: bulletVel,
     vel: [0,-10],
     color: this.color,
     game: this.game
@@ -68,7 +65,7 @@ Ship.prototype.relocate = function relocate() {
   // this.pos = this.game.randomPosition();
   // this.vel = [50, 0];
  
-  alert(`You Survived`)
+  // alert(`You Survived`)
 };
 
 module.exports = Ship;

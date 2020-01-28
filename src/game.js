@@ -15,7 +15,7 @@ Game.BG_COLOR = "#000000";
 Game.DIM_X = 1000;
 Game.DIM_Y = 600;
 Game.FPS = 32;
-Game.NUM_ASTEROIDS = 0;
+Game.NUM_ASTEROIDS = 3;
 
 Game.prototype.add = function add(object) {
   if (object instanceof Asteroid) {
@@ -35,10 +35,14 @@ Game.prototype.addAsteroids = function addAsteroids() {
   }
 };
 
-Game.prototype.addAsteroid = function addAsteroid(num = 1) {
+Game.prototype.addAsteroid = function addAsteroid(vel, num = 1) {
+  // debugger
   for (let i = 0; i < num; i++) {
-    this.add(new Asteroid({game: this}))
+    this.add(new Asteroid({
+      vel: [0,vel],
+      game: this}))
   }
+  // debugger
   
 }
 
@@ -68,6 +72,7 @@ Game.prototype.checkCollisions = function checkCollisions() {
 
       if (obj1.isCollidedWith(obj2)) {
         const collision = obj1.collideWith(obj2);
+        // if (collision) return;
         if (collision) return;
       }
     }
@@ -117,6 +122,7 @@ Game.prototype.remove = function remove(object) {
     this.ships.splice(this.ships.indexOf(object), 1);
   } else {
     throw new Error("unknown type of object");
+    // debugger
   }
 };
 
@@ -130,5 +136,9 @@ Game.prototype.wrap = function wrap(pos) {
     Util.wrap(pos[0], Game.DIM_X), Util.wrap(pos[1], Game.DIM_Y)
   ];
 };
+
+Game.prototype.lose = function lose() {
+  
+}
 
 module.exports = Game;

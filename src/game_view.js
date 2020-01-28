@@ -29,13 +29,6 @@ GameView.prototype.start = function start() {
   requestAnimationFrame(this.animate.bind(this));
 };
 
-GameView.prototype.reset = function reset() {
-  this.bindKeyHandlers();
-  this.lastTime = 0;
-  // reset the animation
-  this.game.asteroid = []
-  requestAnimationFrame(this.animate.bind(this));
-};
 
 GameView.prototype.animate = function animate(time) {
   const timeDelta = time - this.lastTime;
