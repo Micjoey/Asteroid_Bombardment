@@ -1,4 +1,7 @@
 const Util = require("./util");
+const Game = require("./game")
+const Asteroid = require("./asteroid");
+
 
 function MovingObject(options) {
   this.pos = options.pos;
@@ -44,7 +47,9 @@ MovingObject.prototype.move = function move(timeDelta) {
 
   if (this.game.isOutOfBounds(this.pos)) {
     if (this.isWrappable) {
-      this.pos = this.game.wrap(this.pos);
+      // this.pos = this.game.wrap(this.pos);
+      this.game.addAsteroid(4)
+      // debugger
     } else {
       this.remove();
     }

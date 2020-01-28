@@ -16,7 +16,6 @@ const Util = {
   },
   // Return a randomly oriented vector with the given length.
   randomVec(length) {
-    debugger
     // const deg = 2 * Math.PI * Math.random(90);
     deg = 0
     return Util.scale([Math.sin(deg), Math.cos(deg)], length);

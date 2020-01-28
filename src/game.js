@@ -35,6 +35,13 @@ Game.prototype.addAsteroids = function addAsteroids() {
   }
 };
 
+Game.prototype.addAsteroid = function addAsteroid(num) {
+  for (let i = 0; i < num; i++) {
+    this.add(new Asteroid({game: this}))
+  }
+  
+}
+
 //ship position
 Game.prototype.addShip = function addShip() {
   const ship = new Ship({
