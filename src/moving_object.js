@@ -40,6 +40,7 @@ MovingObject.prototype.move = function move(timeDelta) {
       offsetY = this.vel[1] * velocityScale;
 
   this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
+  this.pos = [this.pos[0] + offsetX, this.pos[1] + offsetY];
 
   if (this.game.isOutOfBounds(this.pos)) {
     if (this.isWrappable) {

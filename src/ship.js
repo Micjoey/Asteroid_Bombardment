@@ -26,12 +26,12 @@ Ship.RADIUS = 15;
 Util.inherits(Ship, MovingObject);
 
 Ship.prototype.fireBullet = function fireBullet() {
-  const norm = Util.norm(this.vel);
+  // const norm = Util.norm(this.vel);
 
-  if (norm === 0) {
-    // Can't fire unless moving.
-    return;
-  }
+  // if (norm === 200) {
+  //   // Can't fire unless moving.
+  //   return;
+  // }
 
   const relVel = Util.scale(
     Util.dir(this.vel),
@@ -54,12 +54,18 @@ Ship.prototype.fireBullet = function fireBullet() {
 
 Ship.prototype.power = function power(impulse) {
   this.vel[0] += impulse[0];
-  this.vel[1] += impulse[1];
+  // this.vel[1] += impulse[1];
 };
 
+
+
+// relocates ship when hit by an asteroid
 Ship.prototype.relocate = function relocate() {
-  this.pos = this.game.randomPosition();
-  this.vel = [0, 0];
+  // this.pos = this.game.randomPosition();
+  // this.pos = this.game.randomPosition();
+  // this.vel = [50, 0];
+ 
+  alert(`You Survived for ${length} Minutes`)
 };
 
 module.exports = Ship;

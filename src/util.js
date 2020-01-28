@@ -16,13 +16,19 @@ const Util = {
   },
   // Return a randomly oriented vector with the given length.
   randomVec(length) {
-    const deg = 2 * Math.PI * Math.random();
+    debugger
+    // const deg = 2 * Math.PI * Math.random(90);
+    deg = 0
     return Util.scale([Math.sin(deg), Math.cos(deg)], length);
+    // return Util.scale([Math.sin(deg), Math.cos(deg)], length);
   },
   // Scale the length of a vector by the given amount.
   scale(vec, m) {
     return [vec[0] * m, vec[1] * m];
+
   },
+
+  
   inherits(ChildClass, BaseClass) {
     ChildClass.prototype = Object.create(BaseClass.prototype);
     ChildClass.prototype.constructor = ChildClass;

@@ -35,9 +35,11 @@ Game.prototype.addAsteroids = function addAsteroids() {
   }
 };
 
+//ship position
 Game.prototype.addShip = function addShip() {
   const ship = new Ship({
-    pos: this.randomPosition(),
+    pos: [400,400],
+    // pos: this.randomPosition(),
     game: this
   });
 
@@ -87,6 +89,12 @@ Game.prototype.moveObjects = function moveObjects(delta) {
 };
 
 Game.prototype.randomPosition = function randomPosition() {
+  return [
+    Game.DIM_X * Math.random(),
+    Game.DIM_Y * Math.random()
+  ];
+};
+Game.prototype.fallingPosition = function fallingPosition() {
   return [
     Game.DIM_X * Math.random(),
     Game.DIM_Y * Math.random()

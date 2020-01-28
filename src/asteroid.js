@@ -12,14 +12,17 @@ const DEFAULTS = {
 function Asteroid(options) {
   options = options || {};
   options.color = DEFAULTS.COLOR;
-  options.pos = options.pos || options.game.randomPosition();
+  options.pos = [1000 * Math.random(), 0]
+  // options.pos = options.pos || options.game.fallingPosition();
   options.radius = DEFAULTS.RADIUS;
   options.vel = options.vel || Util.randomVec(DEFAULTS.SPEED);
+  // options.vel = options.vel || Util.randomVec(DEFAULTS.SPEED);
 
   MovingObject.call(this, options);
 }
 
-// Must inherit before adding any properties (usually functions) to the Asteroid prototype
+
+
 Util.inherits(Asteroid, MovingObject);
 
 Asteroid.prototype.collideWith = function collideWith(otherObject) {
