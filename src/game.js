@@ -35,7 +35,7 @@ Game.prototype.addAsteroids = function addAsteroids() {
   }
 };
 
-Game.prototype.addAsteroid = function addAsteroid(num) {
+Game.prototype.addAsteroid = function addAsteroid(num = 1) {
   for (let i = 0; i < num; i++) {
     this.add(new Asteroid({game: this}))
   }
