@@ -72,6 +72,8 @@ Game.prototype.addAsteroid = function addAsteroid(vel, num = 1) {
         }))
       }
     }
+  } else {
+    
   }
 }
 
