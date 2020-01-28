@@ -3,8 +3,8 @@ const MovingObject = require("./moving_object");
 
 function Bullet(options) {
   options.radius = Bullet.RADIUS;
-
   MovingObject.call(this, options);
+  
 }
 
 Bullet.RADIUS = 10;

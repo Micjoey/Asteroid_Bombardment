@@ -27,11 +27,11 @@ Util.inherits(Ship, MovingObject);
 
 Ship.prototype.fireBullet = function fireBullet() {
   const norm = Util.norm(this.vel);
-
-  if (norm === 0) {
-    // Can't fire unless moving.
-    return;
-  }
+  
+  // if (norm === 0) {
+  //   // Can't fire unless moving.
+  //   return;
+  // }
 
   const relVel = Util.scale(
     Util.dir(this.vel),
