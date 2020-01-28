@@ -26,6 +26,7 @@ GameView.prototype.start = function start() {
   this.bindKeyHandlers();
   this.lastTime = 0;
   // start the animation
+  this.game.timeset()
   requestAnimationFrame(this.animate.bind(this));
 };
 

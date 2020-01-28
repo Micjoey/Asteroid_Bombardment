@@ -7,15 +7,20 @@ function Game() {
   this.asteroids = [];
   this.bullets = [];
   this.ships = [];
-  this.time = 0
+  this.time = 1
   this.addAsteroids();
+  this.score = 0
+}
+
+Game.prototype.scoreboard = function () {
+  scoreboard = document.getElementById("scoreboard").innerHTML = `Score: ${this.game.score}`
 }
 
 Game.BG_COLOR = "#000000";
 Game.DIM_X = 1000;
 Game.DIM_Y = 600;
 Game.FPS = 32;
-Game.NUM_ASTEROIDS = 3;
+Game.NUM_ASTEROIDS = 8;
 
 Game.prototype.add = function add(object) {
   if (object instanceof Asteroid) {
@@ -37,19 +42,43 @@ Game.prototype.addAsteroids = function addAsteroids() {
 
 Game.prototype.addAsteroid = function addAsteroid(vel, num = 1) {
   // debugger
-  for (let i = 0; i < num; i++) {
-    this.add(new Asteroid({
-      vel: [0,vel],
-      game: this}))
+  if (this.time < 24) {
+    if (this.asteroids.length < 20) {
+      for (let i = 0; i < num; i++) {
+        if (vel[1] > 4) {
+          vel = 3
+        }
+        this.add(new Asteroid({
+          vel: [0, vel],
+          game: this
+        }))
+      }
+    }
+  } else if (this.time < 50 && this.time > 25) {
+    if (this.asteroids.length < 30) {
+      for (let i = 0; i < num; i++) {
+        this.add(new Asteroid({
+          vel: [0, vel],
+          game: this
+        }))
+      }
+    }
+  } else if (this.time < 100 && this.time > 50) {
+    if (this.asteroids.length < 60) {
+      for (let i = 0; i < num; i++) {
+        this.add(new Asteroid({
+          vel: [0, vel],
+          game: this
+        }))
+      }
+    }
   }
-  // debugger
-  
 }
 
 //ship position
 Game.prototype.addShip = function addShip() {
   const ship = new Ship({
-    pos: [400,400],
+    pos: [400,550],
     // pos: this.randomPosition(),
     game: this
   });
@@ -137,8 +166,14 @@ Game.prototype.wrap = function wrap(pos) {
   ];
 };
 
+Game.prototype.timeset = function() {
+  setInterval(() => {
+    this.time += 1
+  }, 1000);
+}
+
 Game.prototype.lose = function lose() {
-  
+
 }
 
 module.exports = Game;

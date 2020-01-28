@@ -6,7 +6,7 @@ const Bullet = require("./bullet");
 const DEFAULTS = {
   COLOR: "#505050",
   RADIUS: 25,
-  SPEED: 1
+  SPEED: 3
 };
 
 function Asteroid(options) {
