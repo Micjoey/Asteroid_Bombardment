@@ -31,6 +31,13 @@ GameView.prototype.start = function start() {
   requestAnimationFrame(this.animate.bind(this));
 };
 
+GameView.prototype.restart = function restart() {
+  this.bindKeyHandlers();
+  this.lastTime = 0;
+  // start the animation
+  this.game.score = 0
+}
+
 
 GameView.prototype.animate = function animate(time) {
   

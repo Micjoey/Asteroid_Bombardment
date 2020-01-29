@@ -24,7 +24,7 @@ Game.BG_COLOR = "#000000";
 Game.DIM_X = 1000;
 Game.DIM_Y = 600;
 Game.FPS = 32;
-Game.NUM_ASTEROIDS = 0;
+Game.NUM_ASTEROIDS = 8;
 // change this back to 8
 
 
@@ -34,7 +34,6 @@ Game.prototype.draw = function draw(ctx) {
   ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
   ctx.fillStyle = 'black'
   ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
-
   this.allObjects().forEach(function (object) {
     object.draw(ctx);
   });
@@ -185,6 +184,7 @@ Game.prototype.timeset = function() {
 }
 
 Game.prototype.lose = function lose() {
+  
   alert(`You survived for ${this.time} and destroyed ${this.score} - asteroids`)
 }
 

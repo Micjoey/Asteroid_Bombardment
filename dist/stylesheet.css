@@ -8,18 +8,19 @@
 #background {
     z-index: 1;
     position: absolute;
-    /* top: 0; */
-    /* left: 0; */
+    top: 25%;
+    left: 25%;
     height: 600px;
     width: 1000px;
-    opacity: .5;
+    opacity: .4;
+    /* background-color: #7b7b7b; */
 }
 
 .game-board {
     z-index: -1;
     position: absolute;
-    top:0;
-    left: 0;
+    top: 25%;
+    left: 25%;
     opacity: 1;
 }
 
