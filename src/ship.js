@@ -14,13 +14,16 @@ function randomColor() {
   return color;
 }
 
+
 function Ship(options) {
   options.radius = Ship.RADIUS;
   options.vel = options.vel || [0, 0];
   options.color = options.color || randomColor();
   // options.bullet = 20
   MovingObject.call(this, options);
+  this.type = "ship"
 }
+
 
 Ship.RADIUS = 20;
 
@@ -71,11 +74,5 @@ Ship.prototype.relocate = function relocate() {
   
 };
 
-Ship.prototype.lose = function lose() {
-
-
-  // debugger
-  // alert(`You survived for ${this.game.time} seconds and destroyed ${this.game.score} asteroids`)
-}
 
 module.exports = Ship;

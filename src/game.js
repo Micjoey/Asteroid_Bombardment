@@ -25,7 +25,7 @@ Game.BG_COLOR = "#000000";
 Game.DIM_X = 1000;
 Game.DIM_Y = 600;
 Game.FPS = 32;
-Game.NUM_ASTEROIDS = 8;
+Game.NUM_ASTEROIDS = 1;
 // change this back to 8
 
 
@@ -58,7 +58,7 @@ Game.prototype.addAsteroids = function addAsteroids() {
   }
 };
 
-Game.prototype.addAsteroid = function addAsteroid(vel, num = 1) {
+Game.prototype.addAsteroid = function addAsteroid(vel = 2, num = 1) {
   // debugger
   if (this.time < 24) {
     if (this.asteroids.length < 20) {
@@ -99,7 +99,6 @@ Game.prototype.addAsteroid = function addAsteroid(vel, num = 1) {
 Game.prototype.addShip = function addShip() {
   const ship = new Ship({
     pos: [400,550],
-    // pos: this.randomPosition(),
     game: this
   });
 
@@ -185,10 +184,10 @@ Game.prototype.timeset = function() {
 
 Game.prototype.lose = function lose() {
   this.asteroids = [];
-  
   this.ctx.clearRect(0,0, Game.DIM_X, Game.DIM_Y)
-
-  // alert(`You survived for ${this.time} and destroyed ${this.score} - asteroids`)
+  this.ship.game = new Game(ctx)
+  
+  alert(`You survived for ${this.time} and destroyed ${this.score} - asteroids`)
 }
 
 module.exports = Game;

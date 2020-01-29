@@ -13,12 +13,17 @@ document.addEventListener("DOMContentLoaded", function () {
   canvasEl.height = Game.DIM_Y;
 
   const game = new Game(ctx);
-  new GameView(game, ctx).start();
-  // const newGame = () => {
+  // new GameView(game, ctx).start();
+  const start = document.getElementById("start-game")
+  const newGame = () => {
+    new GameView(game, ctx).start();
+    start.style = "display: none"
+  } 
+  start.addEventListener("click", newGame, { once: true,})
 
-  //   debugger
-  //   new GameView(game, ctx).start();
+  // const restart = document.getElementById("restart-game")
+  // const restartGame = () => {
+  //   new GameView(game, ctx).restart();
   // } 
-  // const start = document.getElementById("start-game")
-  // start.addEventListener("mousedown", newGame)
+  // restart.addEventListener("click", restartGame, { once: true,})
 });

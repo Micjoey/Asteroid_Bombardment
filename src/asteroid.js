@@ -18,6 +18,7 @@ function Asteroid(options) {
   options.vel = options.vel || Util.randomVec(DEFAULTS.SPEED);
   options.speed = DEFAULTS.SPEED
   MovingObject.call(this, options);
+  this.isWrappable = false;
 }
 
 
