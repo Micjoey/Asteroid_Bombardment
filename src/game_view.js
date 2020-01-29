@@ -23,6 +23,7 @@ GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
 };
 
 GameView.prototype.start = function start() {
+  this.ctx.clearRect(0, 0, 1000, 600)
   this.bindKeyHandlers();
   this.lastTime = 0;
   // start the animation
@@ -32,10 +33,7 @@ GameView.prototype.start = function start() {
 };
 
 GameView.prototype.restart = function restart() {
-  this.bindKeyHandlers();
-  this.lastTime = 0;
-  // start the animation
-  this.game.score = 0
+  this.ctx.clearRect(0, 0, 1000, 600)
 }
 
 

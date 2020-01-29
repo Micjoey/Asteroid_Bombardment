@@ -28,7 +28,7 @@ Asteroid.prototype.collideWith = function collideWith(otherObject) {
   if (otherObject instanceof Ship) {
     // what happens when a asteroid hits the ship
     
-    otherObject.lose();
+    otherObject.game.lose();
     return true;
   } else if (otherObject instanceof Bullet) {
     this.game.score += 1

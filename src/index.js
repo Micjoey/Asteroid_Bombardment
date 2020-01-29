@@ -11,7 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
   canvasEl.getElementsByClassName.backgroundImage = "url(moon_img.jpg)"
   canvasEl.width = Game.DIM_X;
   canvasEl.height = Game.DIM_Y;
-  const game = new Game();
-  // scoreboard = document.getElementById("scoreboard").innerHTML = `Score: ${Game.score}`
+
+  const game = new Game(ctx);
   new GameView(game, ctx).start();
+  // const newGame = () => {
+
+  //   debugger
+  //   new GameView(game, ctx).start();
+  // } 
+  // const start = document.getElementById("start-game")
+  // start.addEventListener("mousedown", newGame)
 });

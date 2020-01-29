@@ -24,3 +24,9 @@
     opacity: 1;
 }
 
+#start-game {
+    position: absolute;
+    top:25%;
+    z-index: 5;
+}
+

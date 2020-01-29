@@ -72,8 +72,10 @@ Ship.prototype.relocate = function relocate() {
 };
 
 Ship.prototype.lose = function lose() {
+
+
   // debugger
-  alert(`You survived for ${this.game.time} seconds and destroyed ${this.game.score} asteroids`)
+  // alert(`You survived for ${this.game.time} seconds and destroyed ${this.game.score} asteroids`)
 }
 
 module.exports = Ship;

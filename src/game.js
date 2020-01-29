@@ -3,7 +3,8 @@ const Bullet = require("./bullet");
 const Ship = require("./ship");
 const Util = require("./util");
 
-function Game() {
+function Game(ctx) {
+  this.ctx = ctx
   this.asteroids = [];
   this.bullets = [];
   this.ships = [];
@@ -162,7 +163,6 @@ Game.prototype.remove = function remove(object) {
     this.ships.splice(this.ships.indexOf(object), 1);
   } else {
     throw new Error("unknown type of object");
-    // debugger
   }
 };
 
@@ -184,8 +184,11 @@ Game.prototype.timeset = function() {
 }
 
 Game.prototype.lose = function lose() {
+  this.asteroids = [];
   
-  alert(`You survived for ${this.time} and destroyed ${this.score} - asteroids`)
+  this.ctx.clearRect(0,0, Game.DIM_X, Game.DIM_Y)
+
+  // alert(`You survived for ${this.time} and destroyed ${this.score} - asteroids`)
 }
 
 module.exports = Game;
