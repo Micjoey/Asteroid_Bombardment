@@ -49,15 +49,7 @@ MovingObject.prototype.move = function move(timeDelta) {
     if (this.isWrappable) {
       this.pos = this.game.wrap(this.pos);
       newVel = this.vel[1] + 1
-      // if this.game.time > 60 {
-      //   console.log(`game time: ${this.game.time}`)
-      //   console.log(`count of asteroids: ${this.game.asteroids.length}`)
-      // }
       this.game.addAsteroid(newVel)
-      // debugger
-      // asteroid = this.game.asteroids.length
-      // this.remove();
-      // this.game.addAsteroid(asteroid + 1)
     } else {
       this.remove();
     }

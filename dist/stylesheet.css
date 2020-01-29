@@ -1,4 +1,25 @@
 .game {
     display: flex;
-    background-color: red;
+    /* background-color: red; */
 }
+
+
+
+#background {
+    z-index: 1;
+    position: absolute;
+    /* top: 0; */
+    /* left: 0; */
+    height: 600px;
+    width: 1000px;
+    opacity: .5;
+}
+
+.game-board {
+    z-index: -1;
+    position: absolute;
+    top:0;
+    left: 0;
+    opacity: 1;
+}
+

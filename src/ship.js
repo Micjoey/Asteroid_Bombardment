@@ -1,15 +1,16 @@
 const MovingObject = require("./moving_object");
 const Util = require("./util");
 const Bullet = require("./bullet");
+const GameView = require("./game_view")
 
 function randomColor() {
-  const hexDigits = "0123456789ABCDEF";
+  // const hexDigits = "0123456789ABCDEF";
 
-  let color = "#";
-  for (let i = 0; i < 3; i++) {
-    color += hexDigits[Math.floor((Math.random() * 16))];
-  }
-
+  // let color = "#";
+  // for (let i = 0; i < 3; i++) {
+  //   color += hexDigits[Math.floor((Math.random() * 16))];
+  // }
+  color = "white"
   return color;
 }
 
@@ -21,17 +22,17 @@ function Ship(options) {
   MovingObject.call(this, options);
 }
 
-Ship.RADIUS = 15;
+Ship.RADIUS = 20;
 
 Util.inherits(Ship, MovingObject);
 
 Ship.prototype.fireBullet = function fireBullet() {
-  // const norm = Util.norm(this.vel);
+  const norm = Util.norm(this.vel);
 
-  // if (norm === 200) {
-  //   // Can't fire unless moving.
-  //   return;
-  // }
+  if (norm === 200) {
+    // Can't fire unless moving.
+    return;
+  }
 
   const relVel = Util.scale(
     Util.dir(this.vel),
@@ -65,7 +66,12 @@ Ship.prototype.relocate = function relocate() {
   // this.pos = this.game.randomPosition();
   // this.vel = [50, 0];
  
-  // alert(`You Survived`)
+  
 };
+
+Ship.prototype.lose = function lose() {
+  // debugger
+  alert(`You survived for ${this.game.time} seconds and destroyed ${this.game.score} asteroids`)
+}
 
 module.exports = Ship;

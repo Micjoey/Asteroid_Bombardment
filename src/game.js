@@ -16,11 +16,29 @@ Game.prototype.scoreboard = function () {
   scoreboard = document.getElementById("scoreboard").innerHTML = `Score: ${this.game.score}`
 }
 
+
+
+
+// Game.BG_COLOR = "#000000";
 Game.BG_COLOR = "#000000";
 Game.DIM_X = 1000;
 Game.DIM_Y = 600;
 Game.FPS = 32;
-Game.NUM_ASTEROIDS = 8;
+Game.NUM_ASTEROIDS = 0;
+// change this back to 8
+
+
+Game.prototype.draw = function draw(ctx) {
+  // debugger
+  ctx.globalAlpha = 1
+  ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+  ctx.fillStyle = 'black'
+  ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
+
+  this.allObjects().forEach(function (object) {
+    object.draw(ctx);
+  });
+};
 
 Game.prototype.add = function add(object) {
   if (object instanceof Asteroid) {
@@ -110,15 +128,7 @@ Game.prototype.checkCollisions = function checkCollisions() {
   }
 };
 
-Game.prototype.draw = function draw(ctx) {
-  ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-  ctx.fillStyle = Game.BG_COLOR;
-  ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
 
-  this.allObjects().forEach(function(object) {
-    object.draw(ctx);
-  });
-};
 
 Game.prototype.isOutOfBounds = function isOutOfBounds(pos) {
   return (pos[0] < 0) || (pos[1] < 0) ||
@@ -175,7 +185,7 @@ Game.prototype.timeset = function() {
 }
 
 Game.prototype.lose = function lose() {
-
+  alert(`You survived for ${this.time} and destroyed ${this.score} - asteroids`)
 }
 
 module.exports = Game;
