@@ -12,8 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
   canvasEl.width = Game.DIM_X;
   canvasEl.height = Game.DIM_Y;
 
+  const timer = document.getElementsByClassName('timer')[0]
   const game = new Game(ctx);
-  // new GameView(game, ctx).start();
+  // timer.innerHTML(game.timer)
   const start = document.getElementById("start-game")
   const newGame = () => {
     new GameView(game, ctx).start();

@@ -14,7 +14,7 @@ function Asteroid(options) {
   options.color = DEFAULTS.COLOR;
   options.pos = [1000 * Math.random(), 0]
   // options.pos = options.pos || options.game.fallingPosition();
-  options.radius = DEFAULTS.RADIUS;
+  options.radius = options.radius || DEFAULTS.RADIUS;
   options.vel = options.vel || Util.randomVec(DEFAULTS.SPEED);
   options.speed = DEFAULTS.SPEED
   MovingObject.call(this, options);
@@ -28,7 +28,9 @@ Util.inherits(Asteroid, MovingObject);
 Asteroid.prototype.collideWith = function collideWith(otherObject) {
   if (otherObject instanceof Ship) {
     // what happens when a asteroid hits the ship
-    
+    setTimeout(
+      alert(`Refresh Page and Try Again - You survived for ${Util.time(this.game.time)} and destroyed ${this.game.score} Asteroids`)      
+    , 5000);
     otherObject.game.lose();
     return true;
   } else if (otherObject instanceof Bullet) {

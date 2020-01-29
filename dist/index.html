@@ -7,18 +7,25 @@
     <script type="application/javascript" src="./main.js"></script>
   </head>
 
-  <body>
+  <body >
     <div class="game">
-      <div class="game-instructions">
-        Instructions: THE ASTEROIDS ARE COMING OUT OF A BLACK HOLE!! OH NO! SURVIVE AS LONG AS YOU CAN!
-      </div>
-      <canvas class="game-board"></canvas>
-      <img id="background" src="/Users/macallansavett/Desktop/A_a/Javascript/asteroid_bombardment/dist/moon-shot.png" alt="">
-      <div id="scoreboard">
-          <button type="button" id="start-game" > Start </button>
-          <!-- <button type="button" id="restart-game" onclick=restart> Restart </button> -->
-      </div>
-      
+        <div>
+          <canvas class="game-board"></canvas>
+          <div class="timer"></div>
+        </div>
+        <img id="background" src="/Users/macallansavett/Desktop/A_a/Javascript/asteroid_bombardment/dist/moon-shot.png" alt="">
+        <div id="scoreboard">
+            <!-- <button type="button" id="restart-game" onclick=restart> Restart </button> -->
+        </div>
+      <button type="button" id="start-game" >
+        <div class="game-instructions">
+          Instructions: THE ASTEROIDS ARE COMING OUT OF A BLACK HOLE!! OH NO! SURVIVE AS LONG AS YOU CAN!
+        </div>
+        <img id="background" src="/Users/macallansavett/Desktop/A_a/Javascript/asteroid_bombardment/dist/moon-shot.png" alt="">
+        <div class="start"> 
+            Start
+        </div>
+      </button>
     </div>
-  </body>
+  </body >
 </html>

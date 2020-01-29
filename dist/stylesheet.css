@@ -3,8 +3,15 @@
     /* background-color: red; */
 }
 
+div {
+    background-color: black;
+}
 
 
+.body {
+    background-color: black;
+    
+}
 #background {
     z-index: 1;
     position: absolute;
@@ -13,7 +20,11 @@
     height: 600px;
     width: 1000px;
     opacity: .4;
-    /* background-color: #7b7b7b; */
+    border: 2px dashed white;
+}
+
+.header {
+    font-size: 40;
 }
 
 .game-board {
@@ -22,11 +33,36 @@
     top: 15%;
     left: 15%;
     opacity: 1;
+    background-color: black;
+}
+.timer {
+    z-index: -1;
 }
 
 #start-game {
     position: absolute;
-    top:15%;
-    z-index: 5;
+    /* top:30%; */
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    font-size: 80;
+    /* border-radius: 20%; */
+    background-color: black;
+    color: white;
+    left: 0;
+    top: 0;
 }
 
+.game-instructions {
+    display: flex;
+    z-index: 3;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    top: 0;
+    width: 80px;
+}
+
+.start {
+    display: block;
+}

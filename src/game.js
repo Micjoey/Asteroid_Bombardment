@@ -40,6 +40,8 @@ Game.prototype.draw = function draw(ctx) {
   });
 };
 
+
+
 Game.prototype.add = function add(object) {
   if (object instanceof Asteroid) {
     this.asteroids.push(object);
@@ -62,100 +64,189 @@ Game.prototype.addAsteroids = function addAsteroids() {
 Game.prototype.timeset = function () {
   setInterval(() => {
     this.time += 1
-
     if (this.time > 0) {
       this.addAsteroid()
     }
   }, 1000);
 }
 
+function levelone(num) {
+  if (this.time < 10) {
+    if (this.asteroids.length < 40) {
+      num = Math.random(5)
+      for (let i = 0; i < num; i++) {
+        this.add(new Asteroid({
+          vel: [0, speed1[Math.floor(Math.random(speed1.length))]],
+          game: this,
+          radius: 10
+        }))
+        this.add(new Asteroid({
+          vel: [0, speed1[Math.floor(Math.random(speed1.length))]],
+          game: this
+        }))
+      }
+    }
+  } else if (this.time < 70 && this.time >= 30) {
+    num = Math.random(30)
+    if (this.asteroids.length < 60) {
+      for (let i = 0; i < num; i++) {
+        this.add(new Asteroid({
+          vel: [0, speed1[Math.floor(Math.random(speed2.length))]],
+          game: this
+        }))
+        this.add(new Asteroid({
+          vel: [-.25, 2.25],
+          game: this
+        }))
+        this.add(new Asteroid({
+          vel: [.25, 2.25],
+          game: this
+        }))
+      }
+    }
+  } else if (this.time < 200 && this.time >= 70) {
+    num = Math.random(count)
+    if (this.asteroids.length < 80) {
+      for (let i = 0; i < num; i++) {
+        this.add(new Asteroid({
+          vel: [.5, speed1[Math.floor(Math.random(speed2.length))]],
+          game: this
+        }))
+        this.add(new Asteroid({
+          vel: [0, 2.25],
+          game: this
+        }))
+      }
+    }
+  } else if (this.time < 250 && this.time >= 200) {
+    num = Math.random(count)
+    if (this.asteroids.length < 90) {
+      for (let i = 0; i < num; i++) {
+        this.add(new Asteroid({
+          vel: [, speed1[Math.floor(Math.random(speed2.length))]],
+          game: this
+        }))
+        this.add(new Asteroid({
+          vel: [, 2.25],
+          game: this
+        }))
+      }
+    }
+  } else if (this.time < 300 && this.time >= 250) {
+    num = Math.random(30)
+    if (this.asteroids.length < 150) {
+      for (let i = 0; i < num; i++) {
+        this.add(new Asteroid({
+          vel: [, speed1[Math.floor(Math.random(speed2.length))]],
+          game: this
+        }))
+        this.add(new Asteroid({
+          vel: [, 2.25],
+          game: this
+        }))
+      }
+    }
+  } else if (this.time >= 300) {
+    alert("You Won")
+  }
+}
+
 Game.prototype.addAsteroid = function addAsteroid(num = 1,vel = 2 ) {
-  // debugger
+  range = [...Array(100).keys()]
+  range[0] = 1
+  sizes = [10,15,20,25]
   vectors1 = [0]
-  vectors2 = [-0.25,0,.25,]
+  vectors2 = [-0.25,.25,]
   vectors3 = [-0.25,0.75,-1,0,.25,.5,.75,1]
   speed1 = [1,2,3]
-  speed2 = [1,2,3,4]
-  speed3 = [1,2,3,4,5,6,]
-  speed4 = [1,2,3,4,5,6,]
+  speed2 = [3,4,5,6,7,8]
+  speed3 = [6,7,8]
+  speed4 = [9,10,11]
   speed5 = [1,2,3,4,5,6,]
-  count = 0
+
   setInterval(() => {
-    count += 1
-    if (this.time < 30) {
-      if(this.asteroids.length < 25) {
-        num = Math.random(5)
-        for (let i = 0; i < num; i++) {
-          this.add(new Asteroid({
-            vel: [vectors1[Math.floor(Math.random(vectors1.length))], speed1[Math.floor(Math.random(speed1.length))]],
-            game: this
-          }))
-          this.add(new Asteroid({
-            vel: [vectors1[Math.floor(Math.random(vectors1.length))], speed1[Math.floor(Math.random(speed1.length))]],
-            game: this
-          }))
+        if (this.time > 60) {
+          num = range[Math.floor(Math.random(30))]
+          if (this.asteroids.length < 90) {
+            for (let i = 0; i < num; i++) {
+              this.add(new Asteroid({
+                vel: [1, speed3[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 15
+              }))
+              this.add(new Asteroid({
+                vel: [Math.random(1), speed3[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 25
+              }))
+              this.add(new Asteroid({
+                vel: [Math.random(1), speed3[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 25
+              }))
+              this.add(new Asteroid({
+                vel: [0, speed3[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 30
+              }))
+              this.add(new Asteroid({
+                vel: [-Math.random(1), speed3[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 10
+              }))
+              this.add(new Asteroid({
+                vel: [Math.random(1), speed3[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 10
+              }))  
+            }
+          }
+        } else if (this.time > 29) {
+          // num = range[Math.floor(Math.random(30))]
+          num = count
+          if (this.asteroids.length < 50) {
+            for (let i = 0; i < num; i++) {
+              this.add(new Asteroid({
+                vel: [0, speed2[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 15
+              }))
+              this.add(new Asteroid({
+                vel: [-Math.random(1), speed2[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 20
+              }))
+              this.add(new Asteroid({
+                vel: [Math.random(1), speed2[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 10
+              }))
+            }
+          }
+        } 
+        else if (this.time > 0) {
+          if (this.asteroids.length < 40) {
+            num = range[Math.floor(Math.random(40))]
+            for (let i = 0; i < num; i++) {
+              this.add(new Asteroid({
+                vel: [0, speed1[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 15
+              }))
+              this.add(new Asteroid({
+                vel: [.75, speed1[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 25
+              }))
+              this.add(new Asteroid({
+                vel: [-.75, speed1[Math.floor(Math.random(speed1.length))]],
+                game: this,
+                radius: 25
+              }))
+          }
         }
-      }
-    } else if (this.time < 70 && this.time >= 30) {
-      num = Math.random(30)
-      if (this.asteroids.length < 60) {
-        for (let i = 0; i < num; i++) {
-          this.add(new Asteroid({
-            vel: [vectors1[Math.floor(Math.random(vectors1.length))], speed1[Math.floor(Math.random(speed2.length))]],
-            game: this
-          }))
-          this.add(new Asteroid({
-            vel: [vectors2[Math.floor(Math.random(vectors2.length))], 2.25],
-            game: this
-          }))
-        }
-      }
-    } else if (this.time < 200 && this.time >= 70) {
-      num = Math.random(count)
-      if (this.asteroids.length < 80) {
-        for (let i = 0; i < num; i++) {
-          this.add(new Asteroid({
-            vel: [vectors1[Math.floor(Math.random(vectors1.length))], speed1[Math.floor(Math.random(speed2.length))]],
-            game: this
-          }))
-          this.add(new Asteroid({
-            vel: [vectors2[Math.floor(Math.random(vectors2.length))], 2.25],
-            game: this
-          }))
-        }
-      }
-    } else if (this.time < 250 && this.time >= 200) {
-      num = Math.random(count)
-      if (this.asteroids.length < 90) {
-        for (let i = 0; i < num; i++) {
-          this.add(new Asteroid({
-            vel: [vectors1[Math.floor(Math.random(vectors1.length))], speed1[Math.floor(Math.random(speed2.length))]],
-            game: this
-          }))
-          this.add(new Asteroid({
-            vel: [vectors2[Math.floor(Math.random(vectors2.length))], 2.25],
-            game: this
-          }))
-        }
-      }
-    } else if (this.time < 300 && this.time >= 250) {
-      num = Math.random(30)
-      if (this.asteroids.length < 150) {
-        for (let i = 0; i < num; i++) {
-          this.add(new Asteroid({
-            vel: [vectors1[Math.floor(Math.random(vectors1.length))], speed1[Math.floor(Math.random(speed2.length))]],
-            game: this
-          }))
-          this.add(new Asteroid({
-            vel: [vectors2[Math.floor(Math.random(vectors2.length))], 2.25],
-            game: this
-          }))
-        }
-      }
-    } else if (this.time >= 300) {
-      alert("You Won")
-    }
-  }, 1000);
+      } 
+    }, 1000);
   
 
 }
