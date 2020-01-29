@@ -21,9 +21,5 @@ document.addEventListener("DOMContentLoaded", function () {
   } 
   start.addEventListener("click", newGame, { once: true,})
 
-  // const restart = document.getElementById("restart-game")
-  // const restartGame = () => {
-  //   new GameView(game, ctx).restart();
-  // } 
-  // restart.addEventListener("click", restartGame, { once: true,})
+
 });

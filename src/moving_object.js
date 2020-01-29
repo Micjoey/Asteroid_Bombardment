@@ -50,7 +50,7 @@ MovingObject.prototype.move = function move(timeDelta) {
       this.pos = this.game.wrap(this.pos);
     } else {
       // newVel = this.vel[1] + 1
-      this.game.addAsteroid()
+      // this.game.addAsteroid(newVel)
       this.remove();
     }
   }

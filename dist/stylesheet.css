@@ -8,8 +8,8 @@
 #background {
     z-index: 1;
     position: absolute;
-    top: 25%;
-    left: 25%;
+    top: 15%;
+    left: 15%;
     height: 600px;
     width: 1000px;
     opacity: .4;
@@ -19,14 +19,14 @@
 .game-board {
     z-index: -1;
     position: absolute;
-    top: 25%;
-    left: 25%;
+    top: 15%;
+    left: 15%;
     opacity: 1;
 }
 
 #start-game {
     position: absolute;
-    top:25%;
+    top:15%;
     z-index: 5;
 }
 
