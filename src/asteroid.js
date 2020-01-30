@@ -23,14 +23,16 @@ function Asteroid(options) {
 
 
 
+
 Util.inherits(Asteroid, MovingObject);
 
 Asteroid.prototype.collideWith = function collideWith(otherObject) {
   if (otherObject instanceof Ship) {
     // what happens when a asteroid hits the ship
-    setTimeout(
-      alert(`Refresh Page and Try Again - You survived for ${Util.time(this.game.time)} and destroyed ${this.game.score} Asteroids`)      
-    , 5000);
+
+    // setTimeout(
+    //   this.game.closeModal()     
+    // , 10000);
     otherObject.game.lose();
     return true;
   } else if (otherObject instanceof Bullet) {

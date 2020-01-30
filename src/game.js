@@ -2,14 +2,13 @@ const Asteroid = require("./asteroid");
 const Bullet = require("./bullet");
 const Ship = require("./ship");
 const Util = require("./util");
-
+const GameView = require("./game_view")
 function Game(ctx) {
   this.ctx = ctx
   this.asteroids = [];
   this.bullets = [];
   this.ships = [];
   this.time = 1
-  this.addAsteroids();
   this.score = 0
 }
 
@@ -30,7 +29,6 @@ Game.NUM_ASTEROIDS = 0;
 
 
 Game.prototype.draw = function draw(ctx) {
-  // debugger
   ctx.globalAlpha = 1
   ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
   ctx.fillStyle = 'black'
@@ -54,6 +52,8 @@ Game.prototype.add = function add(object) {
   }
 };
 
+
+
 Game.prototype.addAsteroids = function addAsteroids() {
   for (let i = 0; i < Game.NUM_ASTEROIDS; i++) {
     this.add(new Asteroid({ game: this }));
@@ -70,86 +70,7 @@ Game.prototype.timeset = function () {
   }, 1000);
 }
 
-function levelone(num) {
-  if (this.time < 10) {
-    if (this.asteroids.length < 40) {
-      num = Math.random(5)
-      for (let i = 0; i < num; i++) {
-        this.add(new Asteroid({
-          vel: [0, speed1[Math.floor(Math.random(speed1.length))]],
-          game: this,
-          radius: 10
-        }))
-        this.add(new Asteroid({
-          vel: [0, speed1[Math.floor(Math.random(speed1.length))]],
-          game: this
-        }))
-      }
-    }
-  } else if (this.time < 70 && this.time >= 30) {
-    num = Math.random(30)
-    if (this.asteroids.length < 60) {
-      for (let i = 0; i < num; i++) {
-        this.add(new Asteroid({
-          vel: [0, speed1[Math.floor(Math.random(speed2.length))]],
-          game: this
-        }))
-        this.add(new Asteroid({
-          vel: [-.25, 2.25],
-          game: this
-        }))
-        this.add(new Asteroid({
-          vel: [.25, 2.25],
-          game: this
-        }))
-      }
-    }
-  } else if (this.time < 200 && this.time >= 70) {
-    num = Math.random(count)
-    if (this.asteroids.length < 80) {
-      for (let i = 0; i < num; i++) {
-        this.add(new Asteroid({
-          vel: [.5, speed1[Math.floor(Math.random(speed2.length))]],
-          game: this
-        }))
-        this.add(new Asteroid({
-          vel: [0, 2.25],
-          game: this
-        }))
-      }
-    }
-  } else if (this.time < 250 && this.time >= 200) {
-    num = Math.random(count)
-    if (this.asteroids.length < 90) {
-      for (let i = 0; i < num; i++) {
-        this.add(new Asteroid({
-          vel: [, speed1[Math.floor(Math.random(speed2.length))]],
-          game: this
-        }))
-        this.add(new Asteroid({
-          vel: [, 2.25],
-          game: this
-        }))
-      }
-    }
-  } else if (this.time < 300 && this.time >= 250) {
-    num = Math.random(30)
-    if (this.asteroids.length < 150) {
-      for (let i = 0; i < num; i++) {
-        this.add(new Asteroid({
-          vel: [, speed1[Math.floor(Math.random(speed2.length))]],
-          game: this
-        }))
-        this.add(new Asteroid({
-          vel: [, 2.25],
-          game: this
-        }))
-      }
-    }
-  } else if (this.time >= 300) {
-    alert("You Won")
-  }
-}
+
 
 Game.prototype.addAsteroid = function addAsteroid(num = 1,vel = 2 ) {
   range = [...Array(100).keys()]
@@ -203,7 +124,6 @@ Game.prototype.addAsteroid = function addAsteroid(num = 1,vel = 2 ) {
           }
         } else if (this.time > 29) {
           // num = range[Math.floor(Math.random(30))]
-          num = count
           if (this.asteroids.length < 50) {
             for (let i = 0; i < num; i++) {
               this.add(new Asteroid({
@@ -285,6 +205,7 @@ Game.prototype.checkCollisions = function checkCollisions() {
 
 
 
+
 Game.prototype.isOutOfBounds = function isOutOfBounds(pos) {
   return (pos[0] < 0) || (pos[1] < 0) ||
     (pos[0] > Game.DIM_X) || (pos[1] > Game.DIM_Y);
@@ -333,14 +254,36 @@ Game.prototype.wrap = function wrap(pos) {
 };
 
 
+Game.prototype.openModal = function openModal(time, score) {
+  let alertModal = document.getElementById("alert")
+  alertModal.style = "display: block ";
+  alertModal.style = "color: rgba(218,186,3,0.783)"
+  alertModal.innerHTML = `You survived for ${time} and destroyed ${score} Asteroids`
+}
 
+Game.prototype.closeModal = function closeModal(params) {
+  let alertModal = document.getElementById("alert")
+  alertModal.style = "display: none";
+}
 
 Game.prototype.lose = function lose() {
+  const canvasEl = document.getElementsByClassName("game-board")[0];
+  ctx = canvasEl.getContext("2d");
+  time = this.time
+  score = this.score
   this.asteroids = [];
+  this.openModal(time, score)
   this.ctx.clearRect(0,0, Game.DIM_X, Game.DIM_Y)
-  this.ship.game = new Game(ctx)
+  this.time = -50
+
+  setTimeout(() => {
+    this.closeModal()
+    this.time = 0
+  }, 20000);
+  // game = new Game(ctx)
+  // new GameView(game, ctx).start()
   
-  alert(`You survived for ${this.time} and destroyed ${this.score} - asteroids`)
+   
 }
 
 module.exports = Game;

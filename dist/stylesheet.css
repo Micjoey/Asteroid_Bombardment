@@ -1,12 +1,26 @@
 .game {
     display: flex;
     /* background-color: red; */
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: fixed;
 }
 
 div {
     background-color: black;
 }
 
+header {
+    position: fixed;
+    color: rgba(218, 186, 3, 0.783);
+    z-index: 10;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    font-size: 80px;
+}
 
 .body {
     background-color: black;
@@ -20,11 +34,16 @@ div {
     height: 600px;
     width: 1000px;
     opacity: .4;
-    border: 2px dashed white;
+    border: 2px dashed rgba(218, 186, 3, 0.783);
 }
 
 .header {
     font-size: 40;
+}
+
+#alert {
+    display: hidden;
+    z-index: 4;
 }
 
 .game-board {
@@ -60,7 +79,7 @@ div {
     color: white;
     font-size: 18px;
     top: 0;
-    width: 80px;
+    width: 125px;
 }
 
 .start {
