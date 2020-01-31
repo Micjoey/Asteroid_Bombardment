@@ -1,5 +1,8 @@
+
+
 .game {
     display: flex;
+    justify-content: center;
     /* background-color: red; */
     height: 100%;
     width: 100%;
@@ -8,14 +11,21 @@
     position: fixed;
     min-width: 1200px;
     min-height: 800px;
+    overflow: auto;
+    
 }
+
+
 
 div {
     background-color: black;
 }
 
 .header {
-    position: fixed;
+    position: absolute;
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
     color: rgba(218, 186, 3, 0.783);
     z-index: 10;
     width: 100%;
@@ -33,14 +43,34 @@ div {
 #background {
     z-index: 1;
     position: absolute;
-    /* top: 15%;
-    left: 15%; */
+    display: flex;
+    justify-content: center;
+    top: 150px;
+    /* left: 300; */
+    height: 600px;
+    width: 1000px;
+    opacity: .4;
+    border: 2px dashed rgba(218, 186, 3, 0.783);
+    /* border: 10px solid green; */
+    margin-top: 155px;
+    margin: auto;
+    /* margin-left: 90; */
+}
+
+#start-img {
+    z-index: -1;
+    /* position: absolute; */
+    display: flex;
+    justify-content: center;
     top: 200;
     left: 300;
     height: 600px;
     width: 1000px;
     opacity: .4;
     border: 2px dashed rgba(218, 186, 3, 0.783);
+    margin: auto;
+    /* margin-left: 267px; */
+    
 }
 
 
@@ -72,14 +102,14 @@ div {
 
 
 .game-board {
-    z-index: -1;
-    position: absolute;
-    /* top: 15%;
-    left: 15%; */
-    top: 200;
-    left: 300;
+
+    z-index: 1;
+    display: flex;
+    justify-content: center;
     opacity: 1;
     background-color: black;
+    margin-top: 150px;
+    /* margin-left: 90; */
 }
 .timer {
     z-index: -1;
@@ -97,19 +127,73 @@ div {
     color: white;
     left: 0;
     top: 0;
+    
 }
 
-.game-instructions {
+.game-instruction {
     display: flex;
     z-index: 3;
-    background-color: black;
+    background-color: transparent;
     color: white;
     font-size: 18px;
     top: 0;
-    width: 125px;
+    /* width: 125px; */
+    margin: auto;
+    justify-content: center;
 }
 
 .start {
     display: block;
     padding-left: 90px;
+}
+
+.empty-space {
+    height: 60px;
+    /* display: contents; */
+}
+
+.instructions {
+    display: block;
+    position: fixed;
+    /* width: 190px; */
+    font-size: 20px;
+    width: 200px;
+    position: absolute;
+    z-index: 10;
+    /* background-color: white; */
+    color:rgba(218, 186, 3, 0.783);
+    top: 250px;
+    left: 50px;
+}
+
+.keys {
+    display: flex;
+    justify-content: center;
+}
+
+.key-img {
+    height: 60px;
+    margin: 10px;
+}
+
+.keys p {
+    justify-content: center;
+    display: flex;
+    margin: auto;
+}
+
+.gravity {
+    margin-top: 10px;
+}
+
+.space-key-img{
+    width: 200px;
+    margin: 10px;
+}
+
+@media only screen and (max-width: 1520px) {
+    .instructions {
+        left: 400px;
+        left: 25px;
+    }
 }
