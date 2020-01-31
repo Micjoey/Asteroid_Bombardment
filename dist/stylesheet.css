@@ -211,8 +211,7 @@ div {
 
 @media only screen and (max-width: 1520px) {
     .instructions {
-        left: 400px;
-        left: 25px;
+        left: 15px;
     }
     
 }
