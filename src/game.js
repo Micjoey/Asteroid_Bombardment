@@ -170,7 +170,6 @@ Game.prototype.addAsteroid = function addAsteroid(num = 1,vel = 2 ) {
   
 
 }
-
 //ship position
 Game.prototype.addShip = function addShip() {
   const ship = new Ship({
