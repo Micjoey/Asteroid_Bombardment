@@ -22,15 +22,33 @@ GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
   key("space", function () { ship.fireBullet(); });
 };
 
+
 GameView.prototype.start = function start() {
   this.ctx.clearRect(0, 0, 1000, 600)
   this.bindKeyHandlers();
   this.lastTime = 0;
+  this.game.timeset();
+  // const mySound = new sound("")
+  // const myMusic = new sound("../dist/SOUND30.WAV")
+  // myMusic.play()
+  this.game.score = 0;
   // start the animation
-  this.game.timeset()
-  this.game.score = 0
   requestAnimationFrame(this.animate.bind(this));
 };
+// GameView.prototype.sound = function (src) {
+//   this.sound = document.createElement("audio");
+//   this.sound.src = src
+//   this.sound.setAttribute("preload", "auto");
+//   this.sound.setAttribute("controls", "none");
+//   this.sound.style.display = "none"
+//   document.body.appendChild(this.sound);
+//   this.play = function () {
+//     this.sound.play();
+//   }
+//   this.stop = function () {
+//     this.sound.pause();
+//   }
+// }
 
 GameView.prototype.restart = function restart() {
   this.ctx.clearRect(0, 0, 1000, 600)
