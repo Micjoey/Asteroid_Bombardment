@@ -1,20 +1,21 @@
 <html>
   <head>
     <title>Asteroids</title>
-
-    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    <script src="https://kit.fontawesome.com/3bd411c4d4.js" crossorigin="anonymous"></script>    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="reset.css" />
     <script type="application/javascript" src="../vendor/keymaster.js"></script>
     <script type="application/javascript" src="./main.js"></script>
   </head>
 
   <body >
-    <header>
-      ASTEROID BLASTER
+    <header class="header">
+      ASTER<i class="fa fa-bomb" aria-hidden="true"></i>ID BLASTER
     </header>
     <div class="game">
         <div>
           <canvas class="game-board"></canvas>
+          <div class="alert">
+          </div>
           <div class="timer"></div>
         </div>
         <img id="background" src="/Users/macallansavett/Desktop/A_a/Javascript/asteroid_bombardment/dist/moon-shot.png" alt="">
@@ -23,16 +24,15 @@
         </div>
       <button type="button" id="start-game" >
         <div class="game-instructions">
-          Instructions: THE ASTEROIDS ARE COMING OUT OF A BLACK HOLE!! OH NO! SURVIVE AS LONG AS YOU CAN!
+          <p>Instructions:</p> 
+           
         </div>
         <img id="background" src="/Users/macallansavett/Desktop/A_a/Javascript/asteroid_bombardment/dist/moon-shot.png" alt="">
         <div class="start"> 
             Start
         </div>
       </button>
-      <div id="alert">
-        hello
-      </div>
+      
     </div>
   </body >
 </html>

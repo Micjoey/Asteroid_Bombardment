@@ -6,13 +6,15 @@
     margin: 0;
     padding: 0;
     position: fixed;
+    min-width: 1200px;
+    min-height: 800px;
 }
 
 div {
     background-color: black;
 }
 
-header {
+.header {
     position: fixed;
     color: rgba(218, 186, 3, 0.783);
     z-index: 10;
@@ -20,6 +22,8 @@ header {
     height: 80px;
     text-align: center;
     font-size: 80px;
+    padding: 20px;
+    padding-top: 40px;
 }
 
 .body {
@@ -29,28 +33,51 @@ header {
 #background {
     z-index: 1;
     position: absolute;
-    top: 15%;
-    left: 15%;
+    /* top: 15%;
+    left: 15%; */
+    top: 200;
+    left: 300;
     height: 600px;
     width: 1000px;
     opacity: .4;
     border: 2px dashed rgba(218, 186, 3, 0.783);
 }
 
-.header {
-    font-size: 40;
+
+.alert {
+    position: fixed;
+    display: none;
+    z-index: -10;
+    font-size: 30px;
+    right: 500px;
+    top: 200px;
+    height: 500px;
+    width: 500px;
 }
 
-#alert {
-    display: hidden;
-    z-index: 4;
+.alertShow {
+   position: fixed;
+    display: block;
+    z-index: 5;
+    font-size: 50px;
+    top: 350;
+    left: 555;
+    height: 200;
+    width: 500px;
+    color: rgba(218, 186, 3, 0.783);
+    background: transparent;
+    opacity: 1;
 }
+
+
 
 .game-board {
     z-index: -1;
     position: absolute;
-    top: 15%;
-    left: 15%;
+    /* top: 15%;
+    left: 15%; */
+    top: 200;
+    left: 300;
     opacity: 1;
     background-color: black;
 }
@@ -84,4 +111,5 @@ header {
 
 .start {
     display: block;
+    padding-left: 90px;
 }

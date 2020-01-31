@@ -10,7 +10,7 @@ function randomColor() {
   // for (let i = 0; i < 3; i++) {
   //   color += hexDigits[Math.floor((Math.random() * 16))];
   // }
-  color = "white"
+  color = "rgba(218, 186, 3, 0.783)"
   return color;
 }
 

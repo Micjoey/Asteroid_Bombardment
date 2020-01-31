@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
   canvasEl.getElementsByClassName.backgroundImage = "url(moon_img.jpg)"
   canvasEl.width = Game.DIM_X;
   canvasEl.height = Game.DIM_Y;
-
   const timer = document.getElementsByClassName('timer')[0]
   const game = new Game(ctx);
   // timer.innerHTML(game.timer)

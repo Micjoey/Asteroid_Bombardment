@@ -84,8 +84,8 @@ Game.prototype.addAsteroid = function addAsteroid(num = 1,vel = 2 ) {
   speed3 = [6,7,8]
   speed4 = [9,10,11]
   speed5 = [1,2,3,4,5,6,]
-
-  setInterval(() => {
+  
+  const levels = setInterval(() => {
         if (this.time > 60) {
           num = range[Math.floor(Math.random(30))]
           if (this.asteroids.length < 90) {
@@ -174,7 +174,7 @@ Game.prototype.addAsteroid = function addAsteroid(num = 1,vel = 2 ) {
 //ship position
 Game.prototype.addShip = function addShip() {
   const ship = new Ship({
-    pos: [400,550],
+    pos: [514,550],
     game: this
   });
 
@@ -255,14 +255,18 @@ Game.prototype.wrap = function wrap(pos) {
 
 
 Game.prototype.openModal = function openModal(time, score) {
-  let alertModal = document.getElementById("alert")
-  alertModal.style = "display: block ";
-  alertModal.style = "color: rgba(218,186,3,0.783)"
-  alertModal.innerHTML = `You survived for ${time} and destroyed ${score} Asteroids`
+  let alertModal = document.getElementsByClassName("alert")[0]
+  // alertModal.style = "display: block ";
+  // alertModal.style = "color: rgba(218,186,3,0.783)"
+  alertModal.innerHTML = `You survived for ${time} seconds and destroyed ${score} asteroids`
+  alertModal.classList.remove("alert");
+  alertModal.classList.toggle("alertShow")
 }
 
 Game.prototype.closeModal = function closeModal(params) {
-  let alertModal = document.getElementById("alert")
+  let alertModal = document.getElementsByClassName("alertShow")[0]
+  alertModal.classList.remove("alertShow");
+  alertModal.classList.toggle("alert")
   alertModal.style = "display: none";
 }
 
@@ -274,15 +278,13 @@ Game.prototype.lose = function lose() {
   this.asteroids = [];
   this.openModal(time, score)
   this.ctx.clearRect(0,0, Game.DIM_X, Game.DIM_Y)
-  this.time = -50
-
+  this.time = -1000
+  clearInterval(this.addAsteroid.levels)
   setTimeout(() => {
     this.closeModal()
     this.time = 0
-  }, 20000);
-  // game = new Game(ctx)
-  // new GameView(game, ctx).start()
-  
+    this.score = 0
+  }, 10000);
    
 }
 
