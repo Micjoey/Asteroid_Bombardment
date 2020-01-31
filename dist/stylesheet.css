@@ -1,4 +1,6 @@
-
+* {
+    overflow: hidden;
+}
 
 .game {
     display: flex;
@@ -13,6 +15,17 @@
     min-height: 800px;
     overflow: auto;
     
+}
+
+.filler {
+    z-index: -5;
+    height: 100px;
+    /* overflow: auto; */
+}
+
+.game-column {
+    overflow: auto;
+    height: 1000px;
 }
 
 
@@ -70,6 +83,7 @@ div {
     border: 2px dashed rgba(218, 186, 3, 0.783);
     margin: auto;
     /* margin-left: 267px; */
+    margin-top: 70px;
     
 }
 
@@ -127,7 +141,7 @@ div {
     color: white;
     left: 0;
     top: 0;
-    
+    overflow: auto;
 }
 
 .game-instruction {
@@ -166,6 +180,10 @@ div {
     left: 50px;
 }
 
+.instructions div {
+    margin: auto;
+}
+
 .keys {
     display: flex;
     justify-content: center;
@@ -196,4 +214,6 @@ div {
         left: 400px;
         left: 25px;
     }
+    
 }
+
